@@ -26,5 +26,5 @@ def idf(word, corpus):
 	"""
 	if word in idf_cache:
 		return idf_cache[word]
-	idf_cache[word] = math.log10(len(corpus) / sum([1.0 for i in corpus if word in i]))
+	idf_cache[word] = math.log10(len(corpus) / sum([1.0 for i in corpus if word in i['text']]))
 	return idf_cache[word]
