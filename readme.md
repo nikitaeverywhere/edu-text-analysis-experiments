@@ -22,15 +22,15 @@ py index.py
 Result:
 
 ```text
-Computing TF-IDF ranks
-
+Reading texts...
+Done! Computing TF-IDF ranks...
+Progressing text 2225/2225
 Done! Writing results...
-Progressing text 100/100
+Writing worksheet 2225/2225
 Done!
 ```
 
-Output goes to `tf-idf.xlsx` file.
-
+Output goes to `tf-idf.xlsx` file ready for analysis.
 
 License
 -------
