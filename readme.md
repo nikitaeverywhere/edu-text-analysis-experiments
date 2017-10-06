@@ -1,4 +1,4 @@
-# TF_IDF Texts Statical Analysis
+# TF-IDF Texts Statical Analysis
 
 Primitive [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) analysis written on Python.
 
