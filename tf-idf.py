@@ -25,7 +25,7 @@ def tf_idf(corpus):
 
 workbook = xlsxwriter.Workbook('tf-idf.xlsx')
 print('Reading texts...')
-all_texts = text_parser.get_text_corpus()
+all_texts = text_parser.get_text_corpus(9999, 'texts/news')
 print('Done! Computing TF-IDF ranks...')
 all_ranks = tf_idf(all_texts)
 print('\nDone! Writing results...')
