@@ -5,11 +5,19 @@ import os
 
 dir_name = os.path.dirname(__file__)
 regex = re.compile('[^.,;:?!"\'\s]+')
+sentence_re = re.compile('[^.]+')
 first_line = re.compile('^.*\r?\n')
 cache = {}
 
 
-def get_text_corpus(maxfiles=9223372036854775807, root_dir='texts'):
+def normalize_words(words):
+	normalized = []
+	for word in words:
+		normalized.append(word.lower())
+	return normalized
+
+
+def get_text_corpus(maxfiles=9223372036854775807, root_dir='texts', add_sentences=False):
 	pattern = os.path.join(root_dir, '**\*.*')
 	corpus = []
 	files = 0
@@ -27,13 +35,18 @@ def get_text_corpus(maxfiles=9223372036854775807, root_dir='texts'):
 				title = title_list[0]
 			else:
 				title = ""
-			normalized = []
-			for word in words:
-				normalized.append(word.lower())
+
+			by_sentence = []
+			if add_sentences:
+				sentences = sentence_re.findall(all_text)
+				for sentence in sentences:
+					by_sentence.append(normalize_words(regex.findall(sentence)))
+
 			cache[filename] = {
 				'title': title,
 				'filename': filename,
-				'text': normalized
+				'text': normalize_words(words),
+				'by_sentence': by_sentence
 			}
 			corpus.append(cache[filename])
 	return corpus
