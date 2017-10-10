@@ -8,7 +8,7 @@ Usage
 1. Install Python 3, clone the repository, enter repository directory with `cd edu-tf-idf`.
 2. Install required dependencies: `pip3 install -r requirements.txt`.
 3. Place texts to analyze in `/texts` directory (there are a couple already).
-4. Run the analyzer with `py index.py` command.
+4. Run the analyzer with `py tf-idf.py` command.
 
 Example
 -------
@@ -16,7 +16,7 @@ Example
 Run the program:
 
 ```bash
-py index.py
+py tf-idf.py
 ```
 
 Result:
