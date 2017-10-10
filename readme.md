@@ -1,15 +1,14 @@
-# TF-IDF Texts Statical Analysis
+# TF-IDF and Sigma Texts Statical Analysis
 
-Primitive [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) and Sigma analysis written on
-Python, which outputs the results to the convenient XLSX spreadsheet for article-by-article
-analysis. 
+[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) and Sigma analysis written in Python, which 
+output results to the convenient *.xlsx spreadsheets for detailed analysis.
 
 TF-IDF analysis allows to detect the most "important" words in the given text of some text corpus 
-(set of articles, etc). These "important" words are those which occur in the given document more 
-than in any other document.
+(set of articles, etc). These "important" words are those which occur in the particular document
+more than in any other document of the same text corpus.
 
 While TF-IDF analysis is useful for a set of articles, Sigma analysis is useful to analyze the most 
-"important" words in the single, usually big document (books, documents, etc).
+"important" words in a single, usually large text (books, documents, etc).
 
 Preview
 -------
