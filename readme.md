@@ -1,6 +1,11 @@
-# TF_IDF Texts Statical Analysis
+# TF-IDF Texts Statical Analysis
 
-Primitive [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) analysis written on Python.
+Primitive [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) analysis written on Python, which outputs the results to the convenient XLSX spreadsheet for article-by-article analysis. The TF-IDF analysis allows to detect the most "important" words in the given text in some text corpus (set of articles, etc).
+
+Preview
+-------
+
+![Excel Spreadsheet](https://user-images.githubusercontent.com/4989256/31280494-2f061e40-aab5-11e7-93b2-60f7a9341121.png)
 
 Usage
 -----
