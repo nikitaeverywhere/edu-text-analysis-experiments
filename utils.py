@@ -30,6 +30,23 @@ def idf(word, corpus):
 	return idf_cache[word]
 
 
+def tf_idf(corpus):
+	documents_list = []
+	texts = 0
+	for text_data in corpus:
+		texts += 1
+		tf_idf_dictionary = {}
+		print('Progressing text ' + str(texts) + '/' + str(len(corpus)), end='\r')
+		computed_tf = tf(text_data['text'])
+		for word in computed_tf:
+			tf_idf_dictionary[word] = computed_tf[word] * idf(word, corpus)
+		documents_list.append({
+			'title': text_data['title'],
+			'stats': tf_idf_dictionary
+		})
+	return documents_list
+
+
 def sigma(txt):
 	words = {}
 	for i, word in enumerate(txt['text']):
