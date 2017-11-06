@@ -42,10 +42,12 @@ def get_text_corpus(maxfiles=9223372036854775807, root_dir='texts', add_sentence
 				for sentence in sentences:
 					by_sentence.append(normalize_words(regex.findall(sentence)))
 
+			normalized_text = normalize_words(words)
 			cache[filename] = {
 				'title': title,
 				'filename': filename,
-				'text': normalize_words(words),
+				'text': normalized_text,
+				'text_set': set(normalized_text),
 				'by_sentence': by_sentence
 			}
 			corpus.append(cache[filename])
