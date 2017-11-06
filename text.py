@@ -32,7 +32,7 @@ def get_text_corpus(maxfiles=9223372036854775807, root_dir='texts', add_sentence
 			words = regex.findall(all_text)
 			title_list = first_line.findall(all_text)
 			if len(title_list) > 0:
-				title = title_list[0]
+				title = title_list[0].strip()
 			else:
 				title = ""
 

@@ -26,7 +26,7 @@ def idf(word, corpus):
 	"""
 	if word in idf_cache:
 		return idf_cache[word]
-	idf_cache[word] = math.log10(len(corpus) / sum([1.0 for i in corpus if word in i['text_set']]))
+	idf_cache[word] = math.log(len(corpus) / sum([1.0 for i in corpus if word in i['text_set']]))
 	return idf_cache[word]
 
 
@@ -38,11 +38,15 @@ def tf_idf(corpus):
 		tf_idf_dictionary = {}
 		print('Progressing text ' + str(texts) + '/' + str(len(corpus)), end='\r')
 		computed_tf = tf(text_data['text'])
+		max_tf_idf = 0
 		for word in computed_tf:
 			tf_idf_dictionary[word] = computed_tf[word] * idf(word, corpus)
+			if tf_idf_dictionary[word] > max_tf_idf:
+				max_tf_idf = tf_idf_dictionary[word]
 		documents_list.append({
 			'title': text_data['title'],
-			'stats': tf_idf_dictionary
+			'stats': tf_idf_dictionary,
+			'max_rank': max_tf_idf
 		})
 	return documents_list
 

@@ -10,6 +10,10 @@ more than in any other document of the same text corpus.
 While TF-IDF analysis is useful for a set of articles, Sigma analysis is useful to analyze the most 
 "important" words in a single, usually large text (books, documents, etc).
 
+There are 2 more advanced scripts:
++ Matrix output for Gephi in `gephi.py`. Sample output file is `gephi.csv` in this repository.  
++ Horizontal visibility graph building with `hor-vis-graph.py`. A couple of sample files are included in `hor-vis-graph/` directory.
+
 Preview
 -------
 
@@ -20,6 +24,10 @@ TF-IDF applied to some news articles text corpus:
 Sigma method applied to the book "The Hunger Games":
 
 ![Excel Spreadsheet](https://user-images.githubusercontent.com/4989256/31403036-974b030a-ae00-11e7-8e6a-398e5bc5d3ae.png)
+
+Analysis of [article about Putin](http://news.bbc.co.uk/2/hi/business/4120339.stm) with horizontal visibility graph and other articles text corpus:
+
+![Graph](https://user-images.githubusercontent.com/4989256/32467057-efa59298-c351-11e7-9343-9d3494215542.png) 
 
 Usage
 -----
@@ -58,6 +66,15 @@ py sigma.py
 ```
 
 Result goes to `sigma.xlsx` file.
+
+
+##### Horizontal Visibility Graph (exports to `hor-vis-graph/` directory, picks from `texts/news`):
+
+```bash
+py hor-vis-graph.py
+```
+
+Check the result in `hor-vis-graph/` directory, visualize it using [Gephi](https://gephi.org/).
 
 License
 -------
