@@ -30,13 +30,13 @@ def idf(word, corpus):
 	return idf_cache[word]
 
 
-def tf_idf(corpus):
+def tf_idf(corpus, particular_text=None):
+
 	documents_list = []
 	texts = 0
-	for text_data in corpus:
-		texts += 1
+
+	def process_text(text_data):
 		tf_idf_dictionary = {}
-		print('Progressing text ' + str(texts) + '/' + str(len(corpus)), end='\r')
 		computed_tf = tf(text_data['text'])
 		max_tf_idf = 0
 		for word in computed_tf:
@@ -48,6 +48,15 @@ def tf_idf(corpus):
 			'stats': tf_idf_dictionary,
 			'max_rank': max_tf_idf
 		})
+
+	if particular_text:
+		process_text(particular_text)
+	else:
+		for dt in corpus:
+			texts += 1
+			print('Progressing text ' + str(texts) + '/' + str(len(corpus)), end='\r')
+			process_text(dt)
+
 	return documents_list
 
 
