@@ -13,6 +13,7 @@ all_ranks = utils.tf_idf(all_texts)
 print('\nDone! Computing horizontal visibility graph...')
 
 horizon = 10            # do not search in HVG behind the horizon
+filter_threshold = 0.7  # sqrt(1 / filter_threshold) of how many entities to filter from text
 
 for i in range(0, len(all_texts)):
 
@@ -26,7 +27,7 @@ for i in range(0, len(all_texts)):
 	ranks = all_ranks[i]['stats']
 	max_rank = all_ranks[i]['max_rank']
 	text = all_texts[i]['text']
-	commons_threshold = int(math.pow(len(text), 0.6))
+	commons_threshold = int(math.pow(len(text), filter_threshold))
 	commons = [
 		a[0] for a in
 		sorted(ranks.items(), key=lambda x: (x[1], x[0]), reverse=False)[0:commons_threshold]
