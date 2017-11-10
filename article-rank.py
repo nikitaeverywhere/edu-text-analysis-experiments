@@ -38,11 +38,10 @@ worksheet.write(1, 0, '#')
 worksheet.write(1, 2, 'Word')
 worksheet.write(1, 1, 'Rank')
 row = 2
-print(word_ranking)
 for word in main_text['text']:
 	worksheet.write(row, 0, row - 1)
 	worksheet.write(row, 1, word)
 	worksheet.write(row, 2, word_ranking['stats'][word] / word_ranking['max_rank'])
 	row += 1
 workbook.close()
-print('\nDone!')
+print('\nDone! Check article-rank.xlsx file.')

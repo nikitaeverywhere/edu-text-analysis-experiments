@@ -52,9 +52,11 @@ for i in range(0, len(all_texts)):
 		for left in reversed(range(max(0, current - horizon), max(0, current - 1))):
 			if line[left] > line[current]:
 				add_to_hvg(text[left], text[current])
+				break
 		for right in range(min(limit, current + 1), min(limit, current + horizon)):
 			if line[right] > line[current]:
 				add_to_hvg(text[right], text[current])
+				break
 
 	if not os.path.isdir('hor-vis-graph'):
 		os.mkdir('hor-vis-graph')
