@@ -12,8 +12,8 @@ print('Done! Computing TF-IDF ranks...')
 all_ranks = utils.tf_idf(all_texts)
 print('\nDone! Computing horizontal visibility graph...')
 
-horizon = 10            # do not search in HVG behind the horizon
-filter_threshold = 0.7  # sqrt(1 / filter_threshold) of how many entities to filter from text
+horizon = 20              # do not search in HVG behind the horizon
+rank_threshold = 0.01     # filter less relevant words, ranked in range 0..1
 
 for i in range(0, len(all_texts)):
 
@@ -27,16 +27,15 @@ for i in range(0, len(all_texts)):
 	ranks = all_ranks[i]['stats']
 	max_rank = all_ranks[i]['max_rank']
 	text = all_texts[i]['text']
-	commons_threshold = int(math.pow(len(text), filter_threshold))
-	commons = [
-		a[0] for a in
-		sorted(ranks.items(), key=lambda x: (x[1], x[0]), reverse=False)[0:commons_threshold]
-	]
+	commons = set()
 	for word in text:
-		line.append(ranks[word] / max_rank)
+		rank = ranks[word] / max_rank
+		line.append(rank)
+		if rank < rank_threshold:
+			commons.add(word)
 
 	hvg = {}
-	all_words = set(text) - set(commons)
+	all_words = set(text) - commons
 
 	def add_to_hvg(w1, w2):
 		if w1 > w2:
@@ -49,6 +48,8 @@ for i in range(0, len(all_texts)):
 
 	limit = len(line)
 	for current in range(0, limit):
+		if line[current] < rank_threshold:
+			continue
 		for left in reversed(range(max(0, current - horizon), max(0, current - 1))):
 			if line[left] > line[current]:
 				add_to_hvg(text[left], text[current])
