@@ -14,10 +14,10 @@ There are 2 more advanced scripts:
 + Matrix output for Gephi in `gephi.py`. Sample output file is `gephi.csv` in this repository.  
 + Horizontal visibility graph building with `hor-vis-graph.py`. A couple of sample files are included in `hor-vis-graph/` directory.
 
-Preview
--------
+Preview / Examples
+------------------
 
-Experimental semantic network builder:
+Experimental semantic network builder (main concepts from [this article](http://news.bbc.co.uk/2/hi/technology/4276125.stm)):
 
 ![Graph](https://user-images.githubusercontent.com/4989256/32922855-03e96af2-cb3d-11e7-816a-9de981fa0f21.png)
 
