@@ -10,9 +10,10 @@ more than in any other document of the same text corpus.
 While TF-IDF analysis is useful for a set of articles, Sigma analysis is useful to analyze the most 
 "important" words in a single, usually large text (books, documents, etc).
 
-There are 2 more advanced scripts:
+There are a couple of more advanced scripts:
 + Matrix output for Gephi in `gephi.py`. Sample output file is `gephi.csv` in this repository.  
 + Horizontal visibility graph building with `hor-vis-graph.py`. A couple of sample files are included in `hor-vis-graph/` directory.
++ Other experiments (see below)
 
 Preview / Examples
 ------------------
