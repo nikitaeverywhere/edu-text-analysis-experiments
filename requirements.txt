@@ -1,2 +1,3 @@
 XlsxWriter
 python-slugify
+nltk==3.*

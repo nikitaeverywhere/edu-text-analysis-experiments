@@ -4,7 +4,7 @@ import os
 
 
 dir_name = os.path.dirname(__file__)
-regex = re.compile('[^.,;:?!"\'\s]+')
+regex = re.compile('[^.,;():?!"\'\s]+(?:\'[sd])?')
 sentence_re = re.compile('[^.]+')
 first_line = re.compile('^.*\r?\n')
 cache = {}
@@ -13,7 +13,21 @@ cache = {}
 def normalize_words(words):
 	normalized = []
 	for word in words:
-		normalized.append(word.lower())
+		lower = word.lower()
+		if lower == 'it\'s':
+			normalized.append('it')
+			normalized.append('is')
+			continue
+		if len(lower) > 2 and lower[-2] == '\'':
+			if lower[-1] == 'd':
+				normalized.append(lower[:-2])
+				normalized.append('would')
+				continue
+			if lower[-1] == 's':
+				lower = lower[:-2]
+				if len(lower) == 0:
+					continue
+		normalized.append(lower)
 	return normalized
 
 

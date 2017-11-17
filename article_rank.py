@@ -7,7 +7,7 @@ import re
 
 
 if len(sys.argv) < 2:
-	print('Usage: py article-rank.py texts/news/tech/001.txt')
+	print('Usage: py article_rank.py texts/news/tech/001.txt')
 	exit(0)
 
 dir_name = os.path.dirname(os.path.realpath(__file__))

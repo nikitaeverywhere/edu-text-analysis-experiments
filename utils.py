@@ -60,6 +60,15 @@ def tf_idf(corpus, particular_text=None):
 	return documents_list
 
 
+def tf_idf_normalized(corpus, particular_text):
+	txt = tf_idf(corpus, particular_text)[0]
+	return list(map(
+		lambda word:
+			math.sqrt(txt['stats'][word] / txt['max_rank']),
+		particular_text['text']
+	))
+
+
 def sigma(txt):
 	words = {}
 	for i, word in enumerate(txt['text']):

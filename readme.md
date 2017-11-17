@@ -1,4 +1,4 @@
-# TF-IDF and Sigma Texts Statical Analysis
+# TF-IDF, Sigma and Other (Experimental) Texts Analysing Tools
 
 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) and Sigma analysis written in Python, which 
 outputs results to the convenient *.xlsx spreadsheets for detailed analysis.
@@ -16,6 +16,10 @@ There are 2 more advanced scripts:
 
 Preview
 -------
+
+Experimental semantic network builder:
+
+![Graph](https://user-images.githubusercontent.com/4989256/32922855-03e96af2-cb3d-11e7-816a-9de981fa0f21.png)
 
 TF-IDF applied to some news articles text corpus:
 
@@ -35,7 +39,7 @@ Usage
 1. Install Python 3, clone the repository, enter repository directory with `cd edu-tf-idf`.
 2. Install required dependencies: `pip3 install -r requirements.txt`.
 3. Place texts to analyze in `/texts` directory (there are a couple already).
-4. Run the analyzer with `py tf-idf.py` command.
+4. Run the analyzer with `py tf-idf.py` command (there are many!).
 
 Example
 -------
@@ -75,6 +79,16 @@ py hor-vis-graph.py
 ```
 
 Check the result in `hor-vis-graph/` directory, visualize it using [Gephi](https://gephi.org/).
+
+##### Individual Text Analysis
+
+Run experimental semantic network builder with
+
+```bash
+py analyze_text.py texts/news/tech/001.txt
+```
+
+Check the result in `analyzed/<text-title>` directory, visualize it using [Gephi](https://gephi.org/).
 
 License
 -------
