@@ -26,7 +26,8 @@ def idf(word, corpus):
 	"""
 	if word in idf_cache:
 		return idf_cache[word]
-	idf_cache[word] = math.log(len(corpus) / sum([1.0 for i in corpus if word in i['text_set']]))
+	idf_cache[word] = math.log(len(corpus)
+	                           / (sum([1.0 for i in corpus if word in i['text_set']]) + 0.1))
 	return idf_cache[word]
 
 
@@ -64,7 +65,7 @@ def tf_idf_normalized(corpus, particular_text):
 	txt = tf_idf(corpus, particular_text)[0]
 	return list(map(
 		lambda word:
-			math.sqrt(txt['stats'][word] / txt['max_rank']),
+			math.sqrt(max(txt['stats'][word], 0) / txt['max_rank']),
 		particular_text['text']
 	))
 

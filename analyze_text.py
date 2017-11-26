@@ -18,11 +18,13 @@ if not os.path.isfile(file_path):
 	exit(1)
 
 print('Reading text corpus...')
-corpus = text.get_text_corpus(9999, 'texts')
+corpus = text.get_text_corpus(9999, os.path.normpath('texts/news/tech'))
+corpus2 = text.get_text_corpus(9999, os.path.normpath('texts/news/tech'))
 print('Analyzing text ' + file_name)
 
 main_text = None
-for text in corpus:
+for text in corpus2:
+	# print(text['filename'] + '  --  ' + file_path)
 	if text['filename'] == file_path:
 		main_text = text
 if not main_text:
