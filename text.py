@@ -36,7 +36,7 @@ def get_text_corpus(maxfiles=9223372036854775807, root_dir='texts', add_sentence
 	corpus = []
 	files = 0
 	for filename in glob.iglob(
-		os.path.join(os.path.dirname(os.path.realpath(__file__)), pattern),
+		os.path.join(os.path.dirname(os.path.realpath(__file__)), os.path.normpath(pattern)),
 		recursive=True
 	):
 		files += 1

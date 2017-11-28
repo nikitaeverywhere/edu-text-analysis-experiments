@@ -12,7 +12,7 @@ def get_important_words(corpus):
 	i = 0
 	for word, data in sigma(corpus):
 		i += 1
-		if i > 400:
+		if i > 100:
 			break
 		words.append(word)
 	return words
