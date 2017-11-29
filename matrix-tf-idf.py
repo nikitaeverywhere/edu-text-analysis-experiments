@@ -2,29 +2,37 @@
 
 # This program exports 50 most important terms as an adjacent matrix.
 
-from utils import sigma
+from utils import sigma, tf_idf
 from text import get_text_corpus
 import csv
+import os
+from slugify import slugify
 
 
-def get_important_words(corpus):
-	words = []
-	i = 0
-	for word, data in sigma(corpus):
-		i += 1
-		if i > 100:
-			break
-		words.append(word)
-	return words
+file = os.path.join(
+	os.path.dirname(os.path.realpath(__file__)), os.path.normpath('texts/news/tech/001.txt')
+)
+max_words = 30
+
+
+def get_important_words(corpus, text):
+	d = tf_idf(corpus, text)[0]['stats']
+	return sorted(d, key=d.get, reverse=True)[:max_words]
 
 
 def task():
-	with open("gephi.csv", "w") as f:
+	print('Reading text corpus...')
+	text_corpus = get_text_corpus(99999, 'texts/news', add_sentences=True)
+	master_text = next((x for x in text_corpus if x['filename'] == file), None)
+	if not master_text:
+		print('No text in specified text corpus found')
+		exit(1)
+	print('Working with "' + master_text['title'] + '", max_words=' + str(max_words) + '...')
+	with open("matrix-tf-idf-" + slugify(master_text['title']) + ".csv", "w") as f:
 		writer = csv.writer(
 			f, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL, lineterminator='\n'
 		)
-		text = get_text_corpus(1, 'texts/books', add_sentences=True)[0]
-		words = get_important_words(text)
+		words = get_important_words(text_corpus, master_text)
 		matrix = [[""]]
 		for word in words:
 			matrix[0].append(word)
@@ -36,7 +44,7 @@ def task():
 					row.append(0)
 					continue
 				count = 0
-				for sentence in text['by_sentence']:
+				for sentence in master_text['by_sentence']:
 					if word1 in sentence and word2 in sentence:
 						count += 1
 				row.append(count)
